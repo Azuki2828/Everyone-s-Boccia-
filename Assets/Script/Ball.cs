@@ -10,7 +10,8 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     //ボールクラスの定数。
-    Vector3 c_throwPower = new Vector3(-2000.0f, 0.0f, 0.0f);       //投げる強さ
+    Vector3 c_throwPower = new Vector3(-8000.0f, 100.0f, 0.0f);       //投げる強さ
+    Vector3 c_fallPower = new Vector3(0.0f, -800.0f, 0.0f);
     Vector3 c_startPos = new Vector3(50.0f, 10.0f, 0.0f);           //座標
 
 
@@ -25,8 +26,10 @@ public class Ball : MonoBehaviour
     /// </summary>
     void Start()
     {
-
+        Debug.Log("I am alive!");
     }
+
+
 
     /// <summary>
     /// 更新関数。
@@ -41,7 +44,6 @@ public class Ball : MonoBehaviour
             GameObject m_redBallInitData = Resources.Load<GameObject>("Ball_Red");
             //赤ボールを初期化。生成。
             m_redBall = Instantiate(m_redBallInitData);
-
             //赤ボールの剛体を取得。
             m_rigidBody = m_redBall.GetComponent<Rigidbody>();
             //赤ボールのレンダラーを取得。
@@ -49,9 +51,9 @@ public class Ball : MonoBehaviour
             //赤ボールの初期座標を設定。
             m_redBall.transform.position = c_startPos;
 
-
             //赤ボールに力を与える。
             m_rigidBody.AddForce(c_throwPower);
+            m_rigidBody.AddForce(c_fallPower);
             //投球完了。
             m_throwFlg = true;
         }
