@@ -13,7 +13,6 @@ namespace nsBocciaGame
         //ボールクラスの定数。
         static readonly Vector3 c_startPos = new Vector3(50.0f, 5.0f, 0.0f);    //初期座標 
         static readonly float c_maxAngularVelocity = 1000.0f;                   //最大角速度
-
         private Rigidbody m_rigidBody = null;                                   //剛体
         private Renderer m_renderer = null;                                     //レンダラー
         private GameObject m_ball = null;                                       //ボールオブジェクト
@@ -26,8 +25,12 @@ namespace nsBocciaGame
         public void ThrowBall(ref Vector3 throwPower,ref float throwVelocity, EnBallState ballColor)
         {
             //Resourcesからボールのprefabをロード。
+<<<<<<< HEAD:Assets/Script/CBall.cs
             GameObject m_redBallInitData = Resources.Load<GameObject>("Ball");
 
+=======
+            GameObject m_redBallInitData = Resources.Load<GameObject>("Ball_Red");
+>>>>>>> 4b5aadcbb97899bfcc4f2860beba69e9e54b887b:Assets/Script/Ball.cs
             //ボールを初期化。生成。
             m_ball = Instantiate(m_redBallInitData);
 
@@ -37,7 +40,6 @@ namespace nsBocciaGame
             //ボールの剛体を取得。
             m_rigidBody = m_ball.GetComponent<Rigidbody>();
             m_rigidBody.maxAngularVelocity = c_maxAngularVelocity;
-
             //ボールの角速度を設定。
             m_rigidBody.AddTorque(0, 0, throwVelocity, ForceMode.Force);
 
@@ -68,6 +70,7 @@ namespace nsBocciaGame
             m_ball.transform.position = c_startPos;
 
             //ボールに力を与える。
+<<<<<<< HEAD:Assets/Script/CBall.cs
             m_rigidBody.AddForce(throwPower);
         }
 
@@ -84,5 +87,8 @@ namespace nsBocciaGame
         {
             return m_ballType;
         }
+=======
+            m_rigidBody.AddForce(throwPower);        }
+>>>>>>> 4b5aadcbb97899bfcc4f2860beba69e9e54b887b:Assets/Script/Ball.cs
     }
 }
