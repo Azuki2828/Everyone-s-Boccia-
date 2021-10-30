@@ -2,19 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JackBehaviour : MonoBehaviour
+public class CJackBehaviour : MonoBehaviour
 {
-
     Vector3 c_crossPos = new Vector3(-10.0f, 15.0f, 0.0f);             //クロスの位置
 
     bool m_throwFlg = false;                                        //始めの投球した？
-    int count = 0;
+    bool m_flag = false;
    
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("jack is comin");
-        //m_throwFlg = true;
+        //Debug.Log("jack is comin");
     }
 
     //コートから出たとき
@@ -34,9 +32,7 @@ public class JackBehaviour : MonoBehaviour
                 rb.angularVelocity = Vector3.zero;
                 //クロスの位置に戻す
                 go.transform.position = c_crossPos;
-                Debug.Log("AwayFromCourt");
-                count = 0;
-
+                //Debug.Log("AwayFromCourt");
             }
         }
         //初回にジャックボールを着地させなければいけないエリアから出たとき
@@ -45,9 +41,9 @@ public class JackBehaviour : MonoBehaviour
             if (!m_throwFlg)
             {
                 Destroy(go);
-                Debug.Log("i died_1");
+                //Debug.Log("i died_1");
                 GameObject court = GameObject.Find("Court");
-                court.GetComponent<MakeJackBall>().SetThrowFlag(false);
+                court.GetComponent<CMakeJackBall>().SetThrowFlag(false);
             }
         }
     }
@@ -60,14 +56,22 @@ public class JackBehaviour : MonoBehaviour
         if (other.gameObject.tag == "FirstJack"
             || other.gameObject.tag == "FirstJack_triangle")
         {
-            Debug.Log("OnJackArea");
+            //Debug.Log("OnJackArea");
 
             //そこで速度がなくなった＝止まったなら
             if (rb.velocity == Vector3.zero)
             {
                 //投げは成功した。
                 m_throwFlg = true;
-                Debug.Log("Success Jack");
+                //Debug.Log("Success Jack");
+
+                //呼び出すところを考える
+                m_flag = true;
+                if (m_flag)
+                {
+                    GameObject court = GameObject.Find("Court");
+                    court.GetComponent<CJudgeDistance>().Judge();
+                }
             }
         }
 		//ジャックボールの領域でなく、通常範囲の中だった時（手前のエリア）
@@ -77,9 +81,9 @@ public class JackBehaviour : MonoBehaviour
             {
                 GameObject go = GameObject.Find("JackBall(Clone)");
                 Destroy(go);
-                Debug.Log("i died_2");
+                //Debug.Log("i died_2");
                 GameObject court = GameObject.Find("Court");
-                court.GetComponent<MakeJackBall>().SetThrowFlag(false);
+                court.GetComponent<CMakeJackBall>().SetThrowFlag(false);
             }
         }
     }

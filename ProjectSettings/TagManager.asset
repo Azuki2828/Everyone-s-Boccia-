@@ -8,6 +8,7 @@ TagManager:
   - NormalArea
   - FirstJack_triangle
   - FirstJackNonActiveArea
+  - Ball
   layers:
   - Default
   - TransparentFX
