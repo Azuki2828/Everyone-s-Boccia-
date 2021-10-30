@@ -25,12 +25,8 @@ namespace nsBocciaGame
         public void ThrowBall(ref Vector3 throwPower,ref float throwVelocity, EnBallState ballColor)
         {
             //Resourcesからボールのprefabをロード。
-<<<<<<< HEAD:Assets/Script/CBall.cs
             GameObject m_redBallInitData = Resources.Load<GameObject>("Ball");
-
-=======
-            GameObject m_redBallInitData = Resources.Load<GameObject>("Ball_Red");
->>>>>>> 4b5aadcbb97899bfcc4f2860beba69e9e54b887b:Assets/Script/Ball.cs
+            
             //ボールを初期化。生成。
             m_ball = Instantiate(m_redBallInitData);
 
@@ -70,7 +66,6 @@ namespace nsBocciaGame
             m_ball.transform.position = c_startPos;
 
             //ボールに力を与える。
-<<<<<<< HEAD:Assets/Script/CBall.cs
             m_rigidBody.AddForce(throwPower);
         }
 
@@ -87,8 +82,5 @@ namespace nsBocciaGame
         {
             return m_ballType;
         }
-=======
-            m_rigidBody.AddForce(throwPower);        }
->>>>>>> 4b5aadcbb97899bfcc4f2860beba69e9e54b887b:Assets/Script/Ball.cs
     }
 }
