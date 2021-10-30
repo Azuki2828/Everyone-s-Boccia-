@@ -25,8 +25,9 @@ namespace nsBocciaGame
         public void ThrowBall(ref Vector3 throwPower,ref float throwVelocity, EnBallState ballColor)
         {
             //Resourcesからボールのprefabをロード。
-
             GameObject m_redBallInitData = Resources.Load<GameObject>("Ball");
+            
+            //ボールを初期化。生成。
             m_ball = Instantiate(m_redBallInitData);
 
             //タグの設定。

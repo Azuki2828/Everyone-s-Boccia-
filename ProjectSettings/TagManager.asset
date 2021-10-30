@@ -4,11 +4,19 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
+  - OutLine
+  - Ball
+=======
   - FirstJack
   - NormalArea
   - FirstJack_triangle
   - FirstJackNonActiveArea
+<<<<<<< HEAD
   - Ball
+=======
+>>>>>>> 4b5aadcbb97899bfcc4f2860beba69e9e54b887b
+>>>>>>> 76576487a1af907c845859fd3947567893917bd5
   layers:
   - Default
   - TransparentFX
